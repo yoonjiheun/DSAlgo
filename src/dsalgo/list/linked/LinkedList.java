@@ -9,26 +9,27 @@ public class LinkedList implements List {
 	SinglyNode curr;
 	int currSize;
 
-	
 	public LinkedList() {
 		this.tail = new SinglyNode(null);
 		this.head = new SinglyNode(tail);
 		this.curr = tail;
 		this.currSize = 0;
 	}
-	
+
 	public Object remove() {
-		if(curr == tail) return null;
-		
+		if (curr == tail)
+			return null;
+
 		Object objectToRemove = curr.element();
 		curr.setElement(curr.next().element());
-		if(curr.next() == tail) tail = curr;
+		if (curr.next() == tail)
+			tail = curr;
 		curr.setNext(curr.next().next());
 		currSize--;
-		
+
 		return objectToRemove;
 	}
-	
+
 	public boolean append(Object it) {
 		tail.setNext(new SinglyNode(null));
 		tail.setElement(it);
@@ -36,64 +37,69 @@ public class LinkedList implements List {
 		currSize++;
 		return true;
 	}
-	
+
 	public boolean insert(Object it) {
 		curr.setNext(new SinglyNode(curr.element(), curr.next()));
 		curr.setElement(it);
-		if(curr == tail) tail = curr.next();
+		if (curr == tail)
+			tail = curr.next();
 		currSize++;
-		
+
 		return true;
 	}
 
-
 	public void moveToStart() {
-		// TODO Auto-generated method stub
-		
-	}
+		curr = head.next();
 
+	}
 
 	public void moveToEnd() {
-		// TODO Auto-generated method stub
-		
+		moveToStart();
+		while (curr != tail) {
+			curr = curr.next();
+		}
 	}
-
 
 	public void prev() {
-		// TODO Auto-generated method stub
-		
-	}
+		SinglyNode temp = curr;
+		moveToStart();
+		while (curr != temp) {
+			curr = curr.next();
+		}
 
+	}
 
 	public void next() {
-		// TODO Auto-generated method stub
-		
-	}
+		if (curr != tail)
+			curr = curr.next();
 
+	}
 
 	public int length() {
-		// TODO Auto-generated method stub
-		return 0;
+		return currSize;
 	}
-
 
 	public int currPos() {
-		// TODO Auto-generated method stub
-		return 0;
+		SinglyNode temp = head.next();
+		int i;
+		for (i = 0; curr != temp; i++)
+			temp = temp.next();
+		return i;
 	}
-	
+
 	@Override
 	public String toString() {
 		String value = "0 = head\n";
 		SinglyNode currPos = head;
-		
+
 		int c = 0;
-		while(currPos != tail) {
-			value += c + ": " + currPos.element() + " (curr pos value)  " + (c+1) + ": " + currPos.next().element() + " (next pos value)" + "\n";
+		while (currPos != tail) {
+			value += c + ": " + currPos.element() + " (curr pos value)  " + (c + 1)
+					+ ": " + currPos.next().element() + " (next pos value)" + "\n";
 			currPos = currPos.next();
 			c++;
 		}
-		
+
 		return "Size: " + currSize + "\nValue: \n" + value;
 	}
 }

@@ -1,4 +1,4 @@
-package dsalgo.list.array;
+package dsalgo.list.arraybased;
 
 import dsalgo.list.List;
 

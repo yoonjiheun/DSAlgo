@@ -1,6 +1,6 @@
 package dsalgo.test;
 
-import dsalgo.list.array.ArrayList;
+import dsalgo.list.arraybased.ArrayList;
 import dsalgo.list.linked.DoublyLinkedList;
 import dsalgo.list.linked.LinkedList;
 

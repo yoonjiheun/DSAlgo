@@ -53,5 +53,16 @@ public class ArrayStack implements Stack {
 	public void clear() {
 		top = 0;
 	}
+	
+	@Override
+	public String toString() {
+		String values = "";
+		
+		for(int i = 0; i < stack.length; i++) {
+			values += i + ": " + stack[i] + "\n";
+		}
+		
+		return "Size: " + top + "\n Values: \n" + values;
+	}
 
 }
